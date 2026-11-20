@@ -4,13 +4,13 @@
 [![rank](https://make.fun/badge/news-image-20261120/chap7labs/news-image-20261120/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
 [![reward](https://make.fun/badge/news-image-20261120/chap7labs/news-image-20261120/reward.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
 
-Editorial one-page world news infographic summing up **Friday 20 November 2026** in a crisp, deterministic `1024×1024` lossless PNG (`entry.png`) with **37** live-verified stories strictly from 20 November 2026 across all 7 global regions (Asia 8, Europe 7, Americas 6, Middle East 5, Africa 5, Global 4, Oceania 2):
+Print-editorial one-page world news front page summing up **Friday 20 November 2026** in a crisp, deterministic `1024×1024` lossless PNG (`entry.png`) with **35** live-verified stories strictly dated Friday 20 November 2026 across all 7 global regions (`Asia 8 | Europe 7 | M. East 5 | Americas 5 | Africa 4 | Global 4 | Oceania 2`):
 
-- **Masthead & Day-in-Numbers:** Giant serif masthead, 6 tabular KPI callouts, and a proportional 7-region coverage bar.
-- **3 Wide Lead Stories:** Full-bleed custom inline SVG graphics + editorial summaries for Kyiv's 3-bridge missile barrage, Cyclone Akvan's Gopalpur landfall, and Asia's AI/tech sell-off.
-- **10 Full-Bleed Secondary Cards (2×5):** Custom inline SVG illustrations covering UK–EU reset, COP31 overtime, SE Poland Kh-101 crash, Jurf al-Sakhar joint HQ, Japan Oct CPI (`2.3%`), Senegal boat capsize, Nasdaq `-5.28%` rout, Daraxonrasib cancer trial (`>60%` tumor shrinkage), Seoul court push, and Sydney terror raids.
-- **Dark-Navy World Map & 24 Global Briefs:** Numbered leader-line pins (`1`–`13`) plus brief dots (`14`–`37`) alongside 24 concise regional dispatches.
-- **Date Integrity Rail (`DATE CHECK`):** Explicit footer rail auditing and excluding pre-20 Nov (`14–19 Nov`) and post-20 Nov (`>20 Nov`) events.
+- **Broadsheet Masthead & Day-in-Numbers:** Edge-to-edge Georgia serif masthead on an open `#FAF6EE` warm newsprint hairline grid, 6 uniform black tabular KPI callouts separated by crimson vertical rules, and a proportional 7-region coverage bar.
+- **3 Wide Lead Stories:** Custom inline SVG graphics, epistemic status badges, and attributed summaries for Kyiv's 3-bridge missile barrage, Cyclone Akvan's Gopalpur landfall (bright cerulean print map), and Asia's AI/chip sell-off.
+- **10 Bright Print-Editorial Secondary Cards (2×5):** Bright warm-print inline SVG illustrations covering UK–EU Brexit reset, COP31 overtime, SE Poland `Kh-101` crash, Jurf al-Sakhar joint HQ, Japan Oct CPI (`2.3%`), Kenya `Amosing-1` first oil well, Italy CGIL 24h general strike (`SCIOPERO`), oral pancreatic cancer pill `daraxonrasib` (`>60%` tumor shrinkage), White House cyber chief ouster, and Glenn Phillips' historic `118` at Basin Reserve.
+- **Light Editorial World Map & 22 Single-Line Briefs:** Numbered leader-line pins (`1`–`13`) and regional brief dots (`14`–`33`) paired with 22 single-line city-first dispatches (`14`–`35`).
+- **Date Integrity Rail (`DATE CHECK - EXCLUDED`):** Explicit crimson-bordered footer rail auditing and excluding pre-20 Nov (`14–19 Nov`) and post-20 Nov (`>20 Nov`) events.
 
 ## Architecture
 
