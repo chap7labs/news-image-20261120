@@ -56,7 +56,7 @@ const KPIS = [
   { value: '118', label: 'runs by Glenn Phillips against India', meta: 'Centuries in all three formats · ICC' },
 ];
 
-function stampBanner(text, bg = '#B91C1C', fg = '#FFFFFF', x = 6, y = 4, w = 156, h = 21, fs = 13.4) {
+function stampBanner(text, bg = '#B91C1C', fg = '#FFFFFF', x = 6, y = 4, w = 156, h = 21, fs = 13.5) {
   return `
     <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="${bg}"/>
     <text x="${x + w / 2}" y="${y + h * 0.74}" text-anchor="middle" font-size="${fs}" font-weight="900" letter-spacing="0.03em" fill="${fg}" font-family="Segoe UI,Arial,sans-serif">${text}</text>
@@ -72,12 +72,15 @@ function leadDualBanner(primaryText, subText, bg = '#B91C1C', wPrimary = 148, wS
   `;
 }
 
-function sourcePill(text, w = 104, viewH = 72) {
+function sourcePill(text, w = 104, viewH = 72, alignRight = false) {
   const h = 15;
   const y = viewH - h - 3;
+  const x = alignRight ? 188 - w - 4 : 6;
+  const tx = alignRight ? x + w / 2 : 11;
+  const anchor = alignRight ? ' text-anchor="middle"' : '';
   return `
-    <rect x="6" y="${y}" width="${w}" height="${h}" rx="2" fill="#0F172A" opacity="0.93"/>
-    <text x="11" y="${y + 10.6}" font-size="8.6" font-weight="800" fill="#FFFFFF" font-family="Segoe UI,Arial,sans-serif">${text}</text>
+    <rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#0F172A" opacity="0.93"/>
+    <text x="${tx}" y="${y + 10.6}"${anchor} font-size="8.6" font-weight="800" fill="#FFFFFF" font-family="Segoe UI,Arial,sans-serif">${text}</text>
   `;
 }
 
@@ -88,7 +91,7 @@ const LEAD_STORIES = [
     kicker: 'KYIV, UKRAINE · WAR',
     headline: 'Russian Missiles Hit Three Kyiv Dnipro Bridges in Night Barrage',
     summary:
-      'Overnight missile and drone strikes hit Podilsko-Voskresenskyi, Darnytskyi and Pivdennyi bridges, disrupting utilities and transit; 7 killed in Kyiv, 8+ dead nationwide · Officials (Kyiv Ind., Reuters).',
+      'Overnight strikes hit three Dnipro bridges, killing seven in Kyiv and at least eight across Ukraine (Kyiv Independent, BBC).',
     svg: `
       <svg viewBox="0 0 320 110" width="100%" height="110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -133,7 +136,7 @@ const LEAD_STORIES = [
     kicker: 'ODISHA, INDIA · CYCLONE',
     headline: 'Cyclone Akvan Lands Near Gopalpur After Mass Evacuations',
     summary:
-      'Severe storm crosses coast at 70–80 km/h (gusts 90 km/h) and weakens into a deep depression; 300,000+ moved to shelters and zero Odisha deaths reported (IMD, NDTV, Hindu).',
+      'Severe storm crosses Odisha coast near Gopalpur at 70–90 km/h after 300,000+ evacuate; no Odisha deaths reported (IMD, Reuters).',
     svg: `
       <svg viewBox="0 0 320 110" width="100%" height="110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -151,7 +154,7 @@ const LEAD_STORIES = [
           <line x1="240" y1="0" x2="240" y2="110"/>
         </g>
         <path d="M0,0 L146,0 Q138,32 126,52 Q106,78 82,110 L0,110 Z" fill="#E6D8BA" stroke="#9B8E74" stroke-width="1.3"/>
-        <text x="18" y="81" font-size="8.4" font-weight="800" letter-spacing="0.08em" fill="#6B5E48" font-family="Segoe UI,sans-serif">ODISHA</text>
+        <text x="16" y="83" font-size="9.5" font-weight="800" letter-spacing="0.06em" fill="#6B5E48" font-family="Segoe UI,sans-serif">Odisha</text>
         <circle cx="204" cy="54" r="52" fill="url(#cycPrintGlow)"/>
         <g fill="none" stroke="#0369A1" stroke-linecap="round" opacity="0.75">
           <path d="M204,54 m-22,0 a22,16 0 1,1 44,0 a22,16 0 1,1 -44,0" stroke-width="2.3" stroke-dasharray="15 7"/>
@@ -165,12 +168,10 @@ const LEAD_STORIES = [
         <path d="M193,54 L132,60" stroke="#B91C1C" stroke-width="2.5" stroke-dasharray="4 2.5"/>
         <polygon points="124,61 134,55 135,66" fill="#B91C1C"/>
         <circle cx="118" cy="61" r="4.5" fill="#DC2626" stroke="#FFFFFF" stroke-width="1.5"/>
-        <rect x="26" y="54" width="84" height="17" rx="2" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.5"/>
-        <text x="68" y="65.8" text-anchor="middle" font-size="9.2" font-weight="900" letter-spacing="0.04em" fill="#991B1B" font-family="Segoe UI,sans-serif">GOPALPUR</text>
-        <rect x="148" y="88" width="166" height="19" rx="2" fill="#0F172A" opacity="0.94"/>
-        <text x="231" y="100.5" text-anchor="middle" font-size="8.1" font-weight="900" letter-spacing="0.03em" fill="#FDE047" font-family="Segoe UI,sans-serif">300,000+ EVACUATED · 70–90 KM/H</text>
+        <rect x="24" y="54" width="86" height="17" rx="2" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.5"/>
+        <text x="67" y="66" text-anchor="middle" font-size="9.5" font-weight="900" letter-spacing="0.03em" fill="#991B1B" font-family="Segoe UI,sans-serif">Gopalpur</text>
         ${leadDualBanner('CYCLONE AKVAN', 'Landfall · 8 am', '#0F766E', 176, 124, 17.2)}
-        ${sourcePill('IMD / Odisha govt · NDTV', 132, 110)}
+        ${sourcePill('Weather office · IMD', 118, 110)}
       </svg>`,
   },
   {
@@ -179,7 +180,7 @@ const LEAD_STORIES = [
     kicker: 'TAIPEI / TOKYO · MARKETS',
     headline: 'Asia AI & Chip Sell-Off Caps Worst Week Since 2020',
     summary:
-      'Taiex tumbles 6.2% (-17.5% wk), Kospi slides 5.2%, Nikkei drops 5.1% and SoftBank sinks 14.5% amid AI capex doubts and U.S. chip curbs (Reuters, AA).',
+      "Taiex tumbles 6.2%, Kospi 5.2%, Nikkei 5.1% and SoftBank 14.5% to end Asia tech's worst week since 2020 (Reuters, Anadolu).",
     svg: `
       <svg viewBox="0 0 320 110" width="100%" height="110" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="320" height="110" fill="#0B1220"/>
@@ -230,24 +231,32 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#EAF2FA"/>
-        <rect x="10" y="29" width="38" height="22" rx="1.5" fill="#1E3A8A" stroke="#0F172A" stroke-width="0.9"/>
-        <line x1="10" y1="29" x2="48" y2="51" stroke="#FFFFFF" stroke-width="3.2"/>
-        <line x1="48" y1="29" x2="10" y2="51" stroke="#FFFFFF" stroke-width="3.2"/>
-        <line x1="29" y1="29" x2="29" y2="51" stroke="#FFFFFF" stroke-width="5"/>
-        <line x1="10" y1="40" x2="48" y2="40" stroke="#FFFFFF" stroke-width="5"/>
-        <line x1="29" y1="29" x2="29" y2="51" stroke="#DC2626" stroke-width="2.6"/>
-        <line x1="10" y1="40" x2="48" y2="40" stroke="#DC2626" stroke-width="2.6"/>
-        <circle cx="158" cy="40" r="14.5" fill="#1E3A8A" stroke="#1E40AF" stroke-width="1"/>
-        <circle cx="158" cy="30" r="1.3" fill="#FACC15"/><circle cx="165" cy="33" r="1.3" fill="#FACC15"/>
-        <circle cx="168" cy="40" r="1.3" fill="#FACC15"/><circle cx="165" cy="47" r="1.3" fill="#FACC15"/>
-        <circle cx="158" cy="50" r="1.3" fill="#FACC15"/><circle cx="151" cy="47" r="1.3" fill="#FACC15"/>
-        <circle cx="148" cy="40" r="1.3" fill="#FACC15"/><circle cx="151" cy="33" r="1.3" fill="#FACC15"/>
-        <path d="M53,39 Q94,23 137,39" fill="none" stroke="#D97706" stroke-width="2.6" stroke-linecap="round"/>
-        <circle cx="94" cy="31" r="4" fill="#047857" stroke="#FFFFFF" stroke-width="1"/>
-        <rect x="65" y="42" width="60" height="13" rx="2" fill="#FFFFFF" stroke="#1E3A8A" stroke-width="0.9"/>
-        <text x="95" y="51.2" text-anchor="middle" font-size="7.1" font-weight="900" fill="#0F172A" font-family="Segoe UI,sans-serif">SPS · ETS · 100K</text>
+        <!-- UK flag -->
+        <rect x="8" y="30" width="46" height="28" rx="1.5" fill="#1E3A8A" stroke="#0F172A" stroke-width="1"/>
+        <line x1="8" y1="30" x2="54" y2="58" stroke="#FFFFFF" stroke-width="4.2"/>
+        <line x1="54" y1="30" x2="8" y2="58" stroke="#FFFFFF" stroke-width="4.2"/>
+        <line x1="8" y1="30" x2="54" y2="58" stroke="#DC2626" stroke-width="1.6"/>
+        <line x1="54" y1="30" x2="8" y2="58" stroke="#DC2626" stroke-width="1.6"/>
+        <line x1="31" y1="30" x2="31" y2="58" stroke="#FFFFFF" stroke-width="6.5"/>
+        <line x1="8" y1="44" x2="54" y2="44" stroke="#FFFFFF" stroke-width="6.5"/>
+        <line x1="31" y1="30" x2="31" y2="58" stroke="#DC2626" stroke-width="3.6"/>
+        <line x1="8" y1="44" x2="54" y2="44" stroke="#DC2626" stroke-width="3.6"/>
+        <!-- EU flag -->
+        <rect x="126" y="28" width="44" height="24" rx="1.5" fill="#1E3A8A" stroke="#0F172A" stroke-width="1"/>
+        <g fill="#FACC15">
+          <circle cx="148" cy="32.5" r="1.3"/><circle cx="152.5" cy="34" r="1.3"/>
+          <circle cx="155" cy="38" r="1.3"/><circle cx="154" cy="43" r="1.3"/>
+          <circle cx="151" cy="46.5" r="1.3"/><circle cx="148" cy="47.5" r="1.3"/>
+          <circle cx="145" cy="46.5" r="1.3"/><circle cx="142" cy="43" r="1.3"/>
+          <circle cx="141" cy="38" r="1.3"/><circle cx="143.5" cy="34" r="1.3"/>
+        </g>
+        <!-- Golden bridge & handshake clasp -->
+        <path d="M56,43 Q90,22 124,41" fill="none" stroke="#D97706" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M56,47 Q90,34 124,45" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="90" cy="35" r="7.5" fill="#F59E0B" stroke="#0F172A" stroke-width="1.2"/>
+        <path d="M84,35 L89,38 L96,32" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         ${stampBanner('UK–EU DEAL', '#1D4ED8', '#FFFFFF', 6, 4, 148, 21, 13.5)}
-        ${sourcePill('Agreed · Reuters', 92, 72)}
+        ${sourcePill('Agreed · Reuters', 84, 72, true)}
       </svg>`,
   },
   {
@@ -259,18 +268,26 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#FAF0E1"/>
-        <rect x="8" y="30" width="90" height="18" rx="2" fill="#FEE2E2" stroke="#B91C1C" stroke-width="1.1"/>
-        <text x="53" y="42" text-anchor="middle" font-size="8.4" font-weight="900" fill="#991B1B" font-family="Segoe UI,sans-serif">FOSSIL EXIT</text>
-        <line x1="13" y1="46" x2="93" y2="32" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round"/>
-        <circle cx="164" cy="38" r="12.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.8"/>
-        <path d="M164,38 L164,27.5 A10.5,10.5 0 0,1 174.5,38 Z" fill="#FECACA"/>
-        <line x1="164" y1="38" x2="164" y2="29.5" stroke="#0F172A" stroke-width="1.8" stroke-linecap="round"/>
-        <line x1="164" y1="38" x2="173" y2="38" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round"/>
-        <circle cx="164" cy="38" r="1.8" fill="#0F172A"/>
-        <rect x="114" y="52" width="68" height="16" rx="2" fill="#065F46" stroke="#047857" stroke-width="0.9"/>
-        <text x="148" y="63" text-anchor="middle" font-size="8.4" font-weight="900" fill="#FFFFFF" font-family="Segoe UI,sans-serif">$26B DEALS</text>
-        ${stampBanner('COP31: NO DEAL', '#C2410C', '#FFFFFF', 6, 4, 162, 21, 13.2)}
-        ${sourcePill('Ongoing · UN News', 100, 72)}
+        <!-- Earth globe -->
+        <circle cx="34" cy="48" r="19" fill="#0284C7" stroke="#0F172A" stroke-width="1.3"/>
+        <path d="M23,36 Q32,33 38,40 Q34,47 26,48 Z" fill="#16A34A"/>
+        <path d="M36,44 Q45,42 49,50 Q44,60 36,57 Z" fill="#16A34A"/>
+        <path d="M18,50 Q24,52 25,60 Q18,58 18,50 Z" fill="#22C55E"/>
+        <!-- Red thermometer -->
+        <rect x="70" y="28" width="9" height="29" rx="4.5" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2"/>
+        <circle cx="74.5" cy="58" r="7" fill="#DC2626" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="72.5" y="34" width="4" height="22" rx="2" fill="#DC2626"/>
+        <line x1="81" y1="35" x2="85" y2="35" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="81" y1="41" x2="85" y2="41" stroke="#0F172A" stroke-width="1.2"/>
+        <line x1="81" y1="47" x2="85" y2="47" stroke="#0F172A" stroke-width="1.2"/>
+        <!-- Bold red overtime clock -->
+        <circle cx="122" cy="38.5" r="12.5" fill="#FFFFFF" stroke="#B91C1C" stroke-width="2.1"/>
+        <path d="M122,38.5 L122,28 A10.5,10.5 0 0,1 132.5,38.5 Z" fill="#FCA5A5"/>
+        <line x1="122" y1="38.5" x2="122" y2="30" stroke="#0F172A" stroke-width="2.1" stroke-linecap="round"/>
+        <line x1="122" y1="38.5" x2="130.5" y2="38.5" stroke="#DC2626" stroke-width="2.1" stroke-linecap="round"/>
+        <circle cx="122" cy="38.5" r="2" fill="#0F172A"/>
+        ${stampBanner('COP31: NO DEAL', '#C2410C', '#FFFFFF', 6, 4, 162, 21, 13.4)}
+        ${sourcePill('Ongoing · UN News', 96, 72, true)}
       </svg>`,
   },
   {
@@ -282,15 +299,25 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#EAF2E8"/>
-        <path d="M0,0 L102,0 L94,27 L100,50 L88,72 L0,72 Z" fill="#EFE6D0" stroke="#78716C" stroke-width="1"/>
-        <line x1="100" y1="26" x2="90" y2="70" stroke="#0F172A" stroke-width="1.8" stroke-dasharray="3.5 2.5"/>
-        <text x="12" y="45" font-size="9.5" font-weight="900" fill="#334155" font-family="Segoe UI,sans-serif">POLAND</text>
-        <path d="M174,30 Q128,33 74,41" fill="none" stroke="#DC2626" stroke-width="2.6" stroke-dasharray="5 2.5"/>
-        <circle cx="74" cy="41" r="6" fill="#DC2626" stroke="#FEF08A" stroke-width="1.5"/>
-        <rect x="126" y="48" width="56" height="16" rx="2" fill="#FFFFFF" stroke="#1D4ED8" stroke-width="1"/>
-        <text x="154" y="59" text-anchor="middle" font-size="7.4" font-weight="900" fill="#1E3A8A" font-family="Segoe UI,sans-serif">NATO JETS</text>
-        ${stampBanner('POLAND: MISSILE', '#B91C1C', '#FFFFFF', 6, 4, 168, 21, 13.0)}
-        ${sourcePill('Minister says · Reuters', 112, 72)}
+        <!-- Green field terrain -->
+        <path d="M0,47 Q52,41 112,47 T188,43 L188,72 L0,72 Z" fill="#86EFAC" stroke="#15803D" stroke-width="1"/>
+        <path d="M0,56 Q68,51 124,57 T188,54 L188,72 L0,72 Z" fill="#4ADE80" opacity="0.55"/>
+        <!-- Impact crater ring -->
+        <ellipse cx="44" cy="55" rx="19" ry="7.5" fill="#78350F" stroke="#DC2626" stroke-width="1.6"/>
+        <ellipse cx="44" cy="54" rx="10" ry="3.8" fill="#DC2626" opacity="0.65"/>
+        <!-- Streak path & sleek cruise missile -->
+        <path d="M158,31 Q110,36 62,48" fill="none" stroke="#DC2626" stroke-width="2.2" stroke-dasharray="4 2.5"/>
+        <g transform="translate(114,37) rotate(-14)">
+          <polygon points="-24,0 -10,-4.2 14,-4.2 22,0 14,4.2 -10,4.2" fill="#475569" stroke="#0F172A" stroke-width="0.9"/>
+          <polygon points="-24,0 -10,-4.2 -10,4.2" fill="#DC2626"/>
+          <polygon points="-2,-4.2 5,-10 9,-4.2" fill="#64748B" stroke="#0F172A" stroke-width="0.7"/>
+          <polygon points="-2,4.2 5,10 9,4.2" fill="#64748B" stroke="#0F172A" stroke-width="0.7"/>
+          <polygon points="15,-4.2 21,-8 21,-2.2" fill="#DC2626"/>
+          <polygon points="15,4.2 21,8 21,2.2" fill="#DC2626"/>
+          <polygon points="22,-2.2 31,0 22,2.2" fill="#F97316"/>
+        </g>
+        ${stampBanner('POLAND: MISSILE', '#B91C1C', '#FFFFFF', 6, 4, 170, 21, 13.2)}
+        ${sourcePill('Minister says · Reuters', 108, 72, true)}
       </svg>`,
   },
   {
@@ -302,44 +329,64 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#F7EEDB"/>
-        <path d="M0,49 Q54,39 104,50 T188,43 L188,72 L0,72 Z" fill="#93C5FD"/>
-        <path d="M4,56 Q54,46 104,56 T184,50" fill="none" stroke="#1D4ED8" stroke-width="1.3" opacity="0.75"/>
-        <rect x="28" y="34" width="60" height="5" rx="1" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.9"/>
-        <rect x="34" y="34" width="9" height="5" fill="#DC2626"/>
-        <rect x="52" y="34" width="9" height="5" fill="#DC2626"/>
-        <rect x="70" y="34" width="9" height="5" fill="#DC2626"/>
-        <path d="M19,28 L27,31 L26,40 L19,45 L12,40 L11,31 Z" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
-        <rect x="130" y="33" width="36" height="16" fill="#B45309" stroke="#0F172A" stroke-width="0.9"/>
-        <line x1="148" y1="26" x2="148" y2="35" stroke="#0F172A" stroke-width="1.5"/>
-        <rect x="149" y="26" width="22" height="3.2" fill="#DC2626"/>
-        <rect x="149" y="29.2" width="22" height="3.2" fill="#FFFFFF"/>
-        <rect x="149" y="32.4" width="22" height="3.2" fill="#0F172A"/>
-        <rect x="122" y="53" width="60" height="15" rx="2" fill="#FFFFFF" stroke="#9A3412" stroke-width="1"/>
-        <text x="152" y="63" text-anchor="middle" font-size="6.8" font-weight="900" fill="#7C2D12" font-family="Segoe UI,sans-serif">BABIL HQ</text>
-        ${stampBanner('IRAQ: ARMY IN', '#9A3412', '#FFFFFF', 6, 4, 156, 21, 13.2)}
-        ${sourcePill('Officials say · Al Jazeera', 112, 72)}
+        <!-- Blue Tigris river curve -->
+        <path d="M0,51 Q54,43 108,53 T188,48 L188,72 L0,72 Z" fill="#93C5FD"/>
+        <path d="M2,58 Q54,50 108,59 T186,55" fill="none" stroke="#1D4ED8" stroke-width="1.4" opacity="0.8"/>
+        <!-- Iraqi tricolor flag -->
+        <line x1="14" y1="28" x2="14" y2="55" stroke="#0F172A" stroke-width="1.6"/>
+        <rect x="15" y="28" width="28" height="5" fill="#DC2626"/>
+        <rect x="15" y="33" width="28" height="5" fill="#FFFFFF"/>
+        <rect x="15" y="38" width="28" height="5" fill="#0F172A"/>
+        <circle cx="24" cy="35.5" r="1.2" fill="#15803D"/>
+        <circle cx="29" cy="35.5" r="1.2" fill="#15803D"/>
+        <circle cx="34" cy="35.5" r="1.2" fill="#15803D"/>
+        <!-- Striped checkpoint barrier -->
+        <rect x="52" y="42" width="4" height="10" fill="#475569"/>
+        <g transform="translate(54,43) rotate(-22)">
+          <rect x="0" y="-2.5" width="38" height="5" rx="1" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.8"/>
+          <rect x="6" y="-2.5" width="7" height="5" fill="#DC2626"/>
+          <rect x="20" y="-2.5" width="7" height="5" fill="#DC2626"/>
+        </g>
+        <!-- 3 armored trucks advancing -->
+        <g fill="#4D7C0F" stroke="#0F172A" stroke-width="0.9">
+          <rect x="86" y="35" width="22" height="10" rx="1.5"/>
+          <polygon points="108,37 114,40 114,45 108,45"/>
+          <circle cx="91" cy="46.5" r="2.6" fill="#0F172A"/><circle cx="106" cy="46.5" r="2.6" fill="#0F172A"/>
+
+          <rect x="120" y="33" width="22" height="10" rx="1.5"/>
+          <polygon points="142,35 148,38 148,43 142,43"/>
+          <circle cx="125" cy="44.5" r="2.6" fill="#0F172A"/><circle cx="140" cy="44.5" r="2.6" fill="#0F172A"/>
+
+          <rect x="154" y="31" width="22" height="10" rx="1.5"/>
+          <polygon points="176,33 182,36 182,41 176,41"/>
+          <circle cx="159" cy="42.5" r="2.6" fill="#0F172A"/><circle cx="174" cy="42.5" r="2.6" fill="#0F172A"/>
+        </g>
+        ${stampBanner('IRAQ: ARMY IN', '#9A3412', '#FFFFFF', 6, 4, 156, 21, 13.4)}
+        ${sourcePill('Witnessed · Reuters', 96, 72, true)}
       </svg>`,
   },
   {
     num: 8,
     region: 'ASIA',
     kicker: 'TOKYO, JAPAN · ECONOMY',
-    headline: 'Japan Oct CPI Rises to&nbsp;2.3%',
+    headline: 'Japan October Consumer Inflation Rises to&nbsp;2.3%',
     summary: 'Core hits 2.2%; BoJ hike bets stay firm.',
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#FDF6EC"/>
-        <rect x="16" y="40" width="14" height="12" fill="#CBD5E1" stroke="#64748B" stroke-width="0.7"/>
-        <rect x="34" y="37" width="14" height="15" fill="#94A3B8" stroke="#475569" stroke-width="0.7"/>
-        <rect x="52" y="33" width="14" height="19" fill="#F59E0B" stroke="#B45309" stroke-width="0.7"/>
-        <rect x="70" y="27" width="15" height="25" fill="#DC2626" stroke="#7F1D1D" stroke-width="0.8"/>
-        <path d="M16,38 L78,25" fill="none" stroke="#0F172A" stroke-width="1.5" stroke-dasharray="3 2"/>
-        <polygon points="81,24 72,24 76,30" fill="#0F172A"/>
-        <text x="142" y="44.5" text-anchor="middle" font-size="22" font-weight="900" fill="#B91C1C" font-family="Bahnschrift,Segoe UI,sans-serif">2.3%</text>
-        <rect x="116" y="52" width="66" height="15" rx="2" fill="#FFFFFF" stroke="#B91C1C" stroke-width="0.9"/>
-        <text x="149" y="62.2" text-anchor="middle" font-size="7.3" font-weight="900" fill="#0F172A" font-family="Segoe UI,sans-serif">CORE 2.2% · BoJ</text>
+        <!-- Japanese flag sun disc -->
+        <rect x="10" y="30" width="52" height="34" rx="2" fill="#FFFFFF" stroke="#0F172A" stroke-width="1"/>
+        <circle cx="36" cy="47" r="11" fill="#DC2626"/>
+        <!-- Bold rising bar chart -->
+        <rect x="74" y="40" width="14" height="11" fill="#CBD5E1" stroke="#475569" stroke-width="0.9"/>
+        <rect x="92" y="36" width="14" height="15" fill="#94A3B8" stroke="#475569" stroke-width="0.9"/>
+        <rect x="110" y="31" width="14" height="20" fill="#F59E0B" stroke="#B45309" stroke-width="0.9"/>
+        <rect x="128" y="25" width="15" height="26" fill="#DC2626" stroke="#7F1D1D" stroke-width="1"/>
+        <!-- Steep red upward arrow -->
+        <path d="M72,38 L148,25" fill="none" stroke="#B91C1C" stroke-width="3" stroke-linecap="round"/>
+        <polygon points="154,24 142,21 145,31" fill="#B91C1C"/>
         ${stampBanner('JAPAN: +2.3%', '#B91C1C', '#FFFFFF', 6, 4, 154, 21, 13.5)}
-        ${sourcePill('Official · Stats Bureau', 106, 72)}
+        ${sourcePill('Official · Stats Bureau', 106, 72, true)}
       </svg>`,
   },
   {
@@ -351,46 +398,55 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#FBF3DE"/>
-        <rect x="0" y="53" width="188" height="19" fill="#E6D2A2"/>
-        <polygon points="44,54 57,26 67,26 80,54" fill="none" stroke="#0F172A" stroke-width="2.2"/>
-        <line x1="51" y1="39" x2="73" y2="39" stroke="#0F172A" stroke-width="1.5"/>
-        <line x1="47" y1="47" x2="77" y2="47" stroke="#0F172A" stroke-width="1.5"/>
-        <line x1="62" y1="24" x2="62" y2="54" stroke="#B45309" stroke-width="1.8"/>
-        <path d="M108,27 C108,27 117,38 117,44 A9,9 0 1,1 99,44 C99,38 108,27 108,27 Z" fill="#1E293B" stroke="#D97706" stroke-width="1.5"/>
-        <path d="M104,43 A3.5,3.5 0 0,0 108,47" fill="none" stroke="#FBBF24" stroke-width="1.4" stroke-linecap="round"/>
-        <rect x="136" y="29" width="42" height="4.5" fill="#0F172A"/>
-        <rect x="136" y="33.5" width="42" height="4.5" fill="#B91C1C"/>
-        <rect x="136" y="38" width="42" height="4.5" fill="#15803D"/>
-        <rect x="124" y="48" width="58" height="16" rx="2" fill="#FFFFFF" stroke="#047857" stroke-width="1"/>
-        <text x="153" y="59" text-anchor="middle" font-size="7.4" font-weight="900" fill="#065F46" font-family="Segoe UI,sans-serif">AMOSING-1</text>
+        <rect x="0" y="55" width="188" height="17" fill="#E6D2A2"/>
+        <!-- Large dark oil derrick rig -->
+        <polygon points="22,61 38,27 48,27 64,61" fill="none" stroke="#0F172A" stroke-width="2.6"/>
+        <line x1="31" y1="41" x2="55" y2="41" stroke="#0F172A" stroke-width="1.8"/>
+        <line x1="26" y1="51" x2="60" y2="51" stroke="#0F172A" stroke-width="1.8"/>
+        <line x1="43" y1="24" x2="43" y2="61" stroke="#B45309" stroke-width="2.2"/>
+        <!-- Crude gusher droplet -->
+        <path d="M88,28 C88,28 100,41 100,49 A12,12 0 1,1 76,49 C76,41 88,28 88,28 Z" fill="#0F172A" stroke="#D97706" stroke-width="1.8"/>
+        <path d="M83,49 A4.5,4.5 0 0,0 88,54" fill="none" stroke="#FBBF24" stroke-width="1.8" stroke-linecap="round"/>
+        <!-- Kenyan flag motif -->
+        <rect x="120" y="30" width="56" height="6" fill="#0F172A"/>
+        <rect x="120" y="36" width="56" height="1.5" fill="#FFFFFF"/>
+        <rect x="120" y="37.5" width="56" height="6" fill="#B91C1C"/>
+        <rect x="120" y="43.5" width="56" height="1.5" fill="#FFFFFF"/>
+        <rect x="120" y="45" width="56" height="6" fill="#15803D"/>
+        <ellipse cx="148" cy="40.5" rx="5.5" ry="9" fill="#B91C1C" stroke="#FFFFFF" stroke-width="1.1"/>
         ${stampBanner('KENYA: OIL', '#047857', '#FFFFFF', 6, 4, 148, 21, 13.5)}
-        ${sourcePill('Official · The Star', 94, 72)}
+        ${sourcePill('Official · The Star', 90, 72, true)}
       </svg>`,
   },
   {
     num: 10,
     region: 'EUROPE',
     kicker: 'ROME, ITALY · LABOR',
-    headline: 'Italy Hit by 24h General&nbsp;Strike',
-    summary: 'CGIL stages walkouts in 100+ cities.',
+    headline: "General Strike Over Italy's&nbsp;Budget",
+    summary: 'Workers and students march across Italy.',
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#FBECE9"/>
-        <rect x="16" y="29" width="108" height="19" rx="2" fill="#B91C1C" stroke="#0F172A" stroke-width="1"/>
-        <text x="70" y="42.5" text-anchor="middle" font-size="11.5" font-weight="900" letter-spacing="0.06em" fill="#FFFFFF" font-family="Segoe UI,sans-serif">SCIOPERO</text>
-        <g fill="#1E293B">
-          <circle cx="44" cy="52" r="2.8"/><circle cx="58" cy="52" r="2.8"/>
-          <circle cx="72" cy="52" r="2.8"/><circle cx="86" cy="52" r="2.8"/>
-          <circle cx="100" cy="52" r="2.8"/>
+        <!-- Large red protest banner held by 5 marching silhouettes -->
+        <rect x="8" y="29" width="76" height="17" rx="2" fill="#DC2626" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="12" y="33" width="68" height="3.5" fill="#FFFFFF" opacity="0.92"/>
+        <rect x="12" y="39" width="50" height="3.5" fill="#FDE047" opacity="0.92"/>
+        <!-- 5 bold marching protest silhouettes (left/center-left, clear of bottom-right pill) -->
+        <g fill="#0F172A">
+          <circle cx="15" cy="52" r="3.1"/><path d="M10,68 L11.5,56 L18.5,56 L20,68 Z"/>
+          <circle cx="30" cy="52" r="3.1"/><path d="M25,68 L26.5,56 L33.5,56 L35,68 Z"/>
+          <circle cx="45" cy="52" r="3.1"/><path d="M40,68 L41.5,56 L48.5,56 L50,68 Z"/>
+          <circle cx="60" cy="52" r="3.1"/><path d="M55,68 L56.5,56 L63.5,56 L65,68 Z"/>
+          <circle cx="75" cy="52" r="3.1"/><path d="M70,68 L71.5,56 L78.5,56 L80,68 Z"/>
         </g>
-        <rect x="136" y="30" width="45" height="9" fill="none" stroke="#475569" stroke-width="0.9"/>
-        <rect x="136" y="30" width="15" height="9" fill="#15803D"/>
-        <rect x="151" y="30" width="15" height="9" fill="#FFFFFF"/>
-        <rect x="166" y="30" width="15" height="9" fill="#DC2626"/>
-        <rect x="118" y="49" width="64" height="16" rx="2" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1"/>
-        <text x="150" y="60" text-anchor="middle" font-size="7.5" font-weight="900" fill="#991B1B" font-family="Segoe UI,sans-serif">100+ CITIES</text>
-        ${stampBanner('ITALY: STRIKE', '#991B1B', '#FFFFFF', 6, 4, 158, 21, 13.2)}
-        ${sourcePill('Ongoing · ANSA', 88, 72)}
+        <!-- Bold Italian tricolor flag -->
+        <line x1="112" y1="28" x2="112" y2="51" stroke="#0F172A" stroke-width="1.6"/>
+        <rect x="113" y="28" width="54" height="20" fill="none" stroke="#0F172A" stroke-width="0.9"/>
+        <rect x="113" y="28" width="18" height="20" fill="#15803D"/>
+        <rect x="131" y="28" width="18" height="20" fill="#FFFFFF"/>
+        <rect x="149" y="28" width="18" height="20" fill="#DC2626"/>
+        ${stampBanner('ITALY: STRIKE', '#991B1B', '#FFFFFF', 6, 4, 158, 21, 13.4)}
+        ${sourcePill('Reported · Reuters', 92, 72, true)}
       </svg>`,
   },
   {
@@ -402,20 +458,22 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#E6F5EE"/>
-        <g transform="translate(33,39) rotate(-22)">
-          <rect x="-21" y="-8" width="21" height="16" rx="8" fill="#0F766E" stroke="#0F172A" stroke-width="0.9"/>
-          <rect x="0" y="-8" width="21" height="16" rx="8" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.9"/>
+        <!-- Large two-tone capsule -->
+        <g transform="translate(38,46) rotate(-22)">
+          <rect x="-26" y="-10" width="26" height="20" rx="10" fill="#0F766E" stroke="#0F172A" stroke-width="1.2"/>
+          <rect x="0" y="-10" width="26" height="20" rx="10" fill="#FFFFFF" stroke="#0F172A" stroke-width="1.2"/>
+          <line x1="0" y1="-10" x2="0" y2="10" stroke="#0F172A" stroke-width="1.1"/>
         </g>
-        <circle cx="84" cy="39" r="13" fill="#FECDD3" opacity="0.55" stroke="#0F766E" stroke-width="1.2" stroke-dasharray="3 2"/>
-        <circle cx="84" cy="39" r="7.5" fill="none" stroke="#047857" stroke-width="0.9"/>
-        <line x1="84" y1="25" x2="84" y2="53" stroke="#047857" stroke-width="0.9"/>
-        <line x1="70" y1="39" x2="98" y2="39" stroke="#047857" stroke-width="0.9"/>
-        <circle cx="84" cy="39" r="4.2" fill="#E11D48" stroke="#FFFFFF" stroke-width="1"/>
-        <rect x="116" y="28" width="66" height="39" rx="2.5" fill="#FFFFFF" stroke="#065F46" stroke-width="1.4"/>
-        <text x="149" y="48.5" text-anchor="middle" font-size="16.5" font-weight="900" fill="#065F46" font-family="Bahnschrift,Segoe UI,sans-serif">60.7%</text>
-        <text x="149" y="61" text-anchor="middle" font-size="8.2" font-weight="900" fill="#0F172A" font-family="Segoe UI,sans-serif">SHRUNK</text>
+        <!-- Shrinking target cell rings + inward/downward shrink arrows -->
+        <circle cx="114" cy="43" r="18" fill="#FECDD3" opacity="0.55" stroke="#0F766E" stroke-width="1.6" stroke-dasharray="4 2.5"/>
+        <circle cx="114" cy="43" r="11" fill="none" stroke="#047857" stroke-width="1.3"/>
+        <circle cx="114" cy="43" r="5" fill="#E11D48" stroke="#FFFFFF" stroke-width="1.3"/>
+        <path d="M144,29 L132,37" stroke="#065F46" stroke-width="2.4" stroke-linecap="round"/>
+        <polygon points="128,39 134,32 137,39" fill="#065F46"/>
+        <path d="M84,29 L96,37" stroke="#065F46" stroke-width="2.4" stroke-linecap="round"/>
+        <polygon points="100,39 91,39 94,32" fill="#065F46"/>
         ${stampBanner('CANCER PILL', '#0F766E', '#FFFFFF', 6, 4, 150, 21, 13.5)}
-        ${sourcePill('Early trial · Reuters', 100, 72)}
+        ${sourcePill('Early trial · Reuters', 96, 72, true)}
       </svg>`,
   },
   {
@@ -427,25 +485,22 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#FBF1EC"/>
-        <!-- Supreme Court portico -->
-        <polygon points="10,36 42,27 74,36" fill="#CBD5E1" stroke="#334155" stroke-width="1"/>
-        <rect x="15" y="36" width="54" height="15" fill="#FFFFFF" stroke="#475569" stroke-width="0.9"/>
-        <line x1="24" y1="36" x2="24" y2="51" stroke="#475569" stroke-width="2.2"/>
-        <line x1="36" y1="36" x2="36" y2="51" stroke="#475569" stroke-width="2.2"/>
-        <line x1="48" y1="36" x2="48" y2="51" stroke="#475569" stroke-width="2.2"/>
-        <line x1="60" y1="36" x2="60" y2="51" stroke="#475569" stroke-width="2.2"/>
-        <rect x="10" y="51" width="64" height="3" fill="#64748B"/>
-        <!-- Gavel + impeachment docket -->
-        <rect x="86" y="29" width="94" height="38" rx="2" fill="#FFFFFF" stroke="#B91C1C" stroke-width="1.2"/>
-        <g transform="translate(104,45) rotate(-28)">
-          <rect x="-8" y="-4" width="16" height="8" rx="1.5" fill="#78350F" stroke="#0F172A" stroke-width="0.8"/>
-          <rect x="-1.5" y="4" width="3" height="12" fill="#92400E"/>
+        <!-- Classical court pediment & 4 crisp pillars -->
+        <polygon points="10,37 46,26 82,37" fill="#CBD5E1" stroke="#0F172A" stroke-width="1.2"/>
+        <rect x="14" y="37" width="64" height="23" fill="#FFFFFF" stroke="#475569" stroke-width="1"/>
+        <line x1="23" y1="37" x2="23" y2="60" stroke="#334155" stroke-width="3.2"/>
+        <line x1="38" y1="37" x2="38" y2="60" stroke="#334155" stroke-width="3.2"/>
+        <line x1="54" y1="37" x2="54" y2="60" stroke="#334155" stroke-width="3.2"/>
+        <line x1="69" y1="37" x2="69" y2="60" stroke="#334155" stroke-width="3.2"/>
+        <rect x="8" y="60" width="76" height="4" fill="#475569"/>
+        <!-- Large bold wooden gavel & sounding block -->
+        <rect x="104" y="45" width="44" height="6" rx="1.5" fill="#78350F" stroke="#0F172A" stroke-width="1"/>
+        <g transform="translate(124,35) rotate(-28)">
+          <rect x="-13" y="-6" width="26" height="12" rx="2" fill="#92400E" stroke="#0F172A" stroke-width="1.2"/>
+          <rect x="-2.5" y="6" width="5" height="19" rx="1.5" fill="#B45309" stroke="#0F172A" stroke-width="1"/>
         </g>
-        <text x="148" y="43" text-anchor="middle" font-size="7.8" font-weight="900" fill="#991B1B" font-family="Segoe UI,sans-serif">IMPEACHMENT</text>
-        <rect x="122" y="48" width="52" height="13" rx="1.5" fill="#FEE2E2" stroke="#DC2626" stroke-width="0.8"/>
-        <text x="148" y="57.2" text-anchor="middle" font-size="7.0" font-weight="900" fill="#7F1D1D" font-family="Segoe UI,sans-serif">DOCKET</text>
-        ${stampBanner('SEOUL: IMPEACH', '#B91C1C', '#FFFFFF', 6, 4, 168, 21, 13.0)}
-        ${sourcePill('Party decision · KH', 98, 72)}
+        ${stampBanner('SEOUL: IMPEACH', '#B91C1C', '#FFFFFF', 6, 4, 170, 21, 13.2)}
+        ${sourcePill('Party decision · KH', 96, 72, true)}
       </svg>`,
   },
   {
@@ -457,17 +512,25 @@ const SECONDARY_STORIES = [
     svg: `
       <svg viewBox="0 0 188 72" width="100%" height="72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="72" fill="#E4F3E4"/>
-        <ellipse cx="64" cy="46" rx="52" ry="18" fill="#86EFAC" stroke="#15803D" stroke-width="1"/>
-        <polygon points="52,33 70,33 78,56 44,56" fill="#E5D3A8" stroke="#A16207" stroke-width="0.8"/>
-        <line x1="56" y1="36" x2="56" y2="49" stroke="#78350F" stroke-width="2"/>
-        <line x1="61" y1="36" x2="61" y2="49" stroke="#78350F" stroke-width="2"/>
-        <line x1="66" y1="36" x2="66" y2="49" stroke="#78350F" stroke-width="2"/>
-        <line x1="55" y1="36" x2="67" y2="36" stroke="#78350F" stroke-width="1.6"/>
-        <rect x="114" y="28" width="68" height="39" rx="2.5" fill="#0F172A" stroke="#0E7490" stroke-width="1.2"/>
-        <text x="148" y="50" text-anchor="middle" font-size="19" font-weight="900" fill="#FDE047" font-family="Bahnschrift,Segoe UI,sans-serif">118*</text>
-        <text x="148" y="61" text-anchor="middle" font-size="6.8" font-weight="800" fill="#E2E8F0" font-family="Segoe UI,sans-serif">3-FORMAT REC.</text>
-        ${stampBanner('PHILLIPS: 118', '#0E7490', '#FFFFFF', 6, 4, 158, 21, 13.2)}
-        ${sourcePill('Final · ICC / ESPN', 92, 72)}
+        <!-- Green cricket pitch oval -->
+        <ellipse cx="78" cy="49" rx="64" ry="19" fill="#86EFAC" stroke="#15803D" stroke-width="1.2"/>
+        <polygon points="62,33 88,33 98,61 52,61" fill="#E5D3A8" stroke="#A16207" stroke-width="0.9"/>
+        <!-- 3 crisp wooden stumps with bails -->
+        <line x1="68" y1="35" x2="68" y2="54" stroke="#78350F" stroke-width="2.4"/>
+        <line x1="75" y1="35" x2="75" y2="54" stroke="#78350F" stroke-width="2.4"/>
+        <line x1="82" y1="35" x2="82" y2="54" stroke="#78350F" stroke-width="2.4"/>
+        <line x1="67" y1="34.5" x2="74" y2="34.5" stroke="#B45309" stroke-width="2.2"/>
+        <line x1="76" y1="34.5" x2="83" y2="34.5" stroke="#B45309" stroke-width="2.2"/>
+        <!-- Bold angled wooden cricket bat -->
+        <g transform="translate(36,44) rotate(28)">
+          <rect x="-2" y="-16" width="4" height="10" rx="1" fill="#0F172A"/>
+          <rect x="-5.5" y="-6" width="11" height="22" rx="2" fill="#FDE68A" stroke="#78350F" stroke-width="1.2"/>
+        </g>
+        <!-- Red cricket ball with white seam -->
+        <circle cx="122" cy="41" r="8.5" fill="#B91C1C" stroke="#0F172A" stroke-width="1.1"/>
+        <path d="M116,36 Q122,41 128,46" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-dasharray="2 1.5"/>
+        ${stampBanner('PHILLIPS: 118', '#0E7490', '#FFFFFF', 6, 4, 158, 21, 13.4)}
+        ${sourcePill('Scorecard · ICC', 84, 72, true)}
       </svg>`,
   },
 ];
@@ -497,21 +560,29 @@ const BRIEFS = [
   { num: 35, reg: 'GLOBAL', place: 'Tennis:', text: 'Billie Jean King Cup Play-offs open in 7 nations (ITF).' },
 ];
 
-// Direct, de-clustered geographic numbered pins (1-13) on dark-navy map (viewBox 300x176)
+// Direct, de-clustered geographic numbered pins across all 6 continents
 const MAP_PINS = [
-  { num: 1, px: 176, py: 38, reg: 'EUROPE' },   // Kyiv, Ukraine
-  { num: 2, px: 209, py: 79, reg: 'ASIA' },     // Gopalpur, India
-  { num: 3, px: 245, py: 73, reg: 'ASIA' },     // Taipei / Asia AI Sell-Off
-  { num: 4, px: 132, py: 34, reg: 'EUROPE' },   // London / Brussels (UK-EU Deal)
-  { num: 5, px: 170, py: 58, reg: 'M. EAST' },  // Antalya, Türkiye
-  { num: 6, px: 160, py: 35, reg: 'EUROPE' },   // SE Poland
-  { num: 7, px: 188, py: 65, reg: 'M. EAST' },  // Babil, Iraq
-  { num: 8, px: 264, py: 56, reg: 'ASIA' },     // Tokyo, Japan
-  { num: 9, px: 171, py: 98, reg: 'AFRICA' },   // Turkana, Kenya
-  { num: 10, px: 152, py: 55, reg: 'EUROPE' },  // Rome, Italy
-  { num: 11, px: 133, py: 55, reg: 'GLOBAL' },  // Barcelona (Cancer Pill)
-  { num: 12, px: 246, py: 54, reg: 'ASIA' },    // Seoul, South Korea
-  { num: 13, px: 278, py: 150, reg: 'OCEANIA' }, // Wellington, NZ
+  { num: 1, px: 174, py: 37, reg: 'EUROPE' },    // Kyiv, Ukraine
+  { num: 2, px: 207, py: 76, reg: 'ASIA' },      // Gopalpur, India
+  { num: 3, px: 242, py: 70, reg: 'ASIA' },      // Taipei / Asia AI Sell-Off
+  { num: 4, px: 138, py: 34, reg: 'EUROPE' },    // Brussels (UK-EU Deal)
+  { num: 5, px: 169, py: 56, reg: 'M. EAST' },   // Antalya, Türkiye
+  { num: 6, px: 158, py: 35, reg: 'EUROPE' },    // SE Poland
+  { num: 7, px: 188, py: 64, reg: 'M. EAST' },   // Babil, Iraq
+  { num: 8, px: 261, py: 54, reg: 'ASIA' },      // Tokyo, Japan
+  { num: 9, px: 168, py: 95, reg: 'AFRICA' },    // Turkana, Kenya
+  { num: 10, px: 153, py: 52, reg: 'EUROPE' },   // Rome, Italy
+  { num: 11, px: 130, py: 52, reg: 'GLOBAL' },   // Barcelona (Cancer Pill)
+  { num: 12, px: 244, py: 51, reg: 'ASIA' },     // Seoul, South Korea
+  { num: 13, px: 281, py: 147, reg: 'OCEANIA' }, // Wellington, NZ
+  { num: 18, px: 54, py: 52, reg: 'AMERICAS' },  // Washington, US
+  { num: 25, px: 153, py: 85, reg: 'AFRICA' },   // Darfur, Sudan
+  { num: 26, px: 156, py: 126, reg: 'AFRICA' },  // Pretoria, South Africa
+  { num: 28, px: 79, py: 42, reg: 'AMERICAS' },  // New York, US
+  { num: 30, px: 64, py: 27, reg: 'AMERICAS' },  // Ottawa, Canada
+  { num: 31, px: 94, py: 108, reg: 'AMERICAS' }, // Brasília, Brazil
+  { num: 32, px: 260, py: 137, reg: 'OCEANIA' }, // Sydney, Australia
+  { num: 33, px: 28, py: 48, reg: 'GLOBAL' },    // Las Vegas, US
 ];
 
 function renderWorldMapSvg() {
@@ -519,37 +590,49 @@ function renderWorldMapSvg() {
     const c = REGION_COLORS[p.reg];
     return `
       <g>
-        <circle cx="${p.px}" cy="${p.py}" r="6.8" fill="${c}" stroke="#FFFDF9" stroke-width="1.2"/>
-        <text x="${p.px}" y="${p.py + 2.6}" text-anchor="middle" font-size="7.4" font-weight="900" fill="#FFFFFF" font-family="Segoe UI,sans-serif">${p.num}</text>
+        <circle cx="${p.px}" cy="${p.py}" r="6.4" fill="${c}" stroke="#FFFDF9" stroke-width="1.15"/>
+        <text x="${p.px}" y="${p.py + 2.5}" text-anchor="middle" font-size="7.2" font-weight="900" fill="#FFFFFF" font-family="Segoe UI,sans-serif">${p.num}</text>
       </g>`;
   }).join('');
 
   return `
-    <svg viewBox="0 -6 300 176" width="100%" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;flex:1;min-height:0;width:100%;background:#13293D;border:1px solid #0F172A;">
-      <rect y="-6" width="300" height="176" fill="#13293D"/>
+    <svg viewBox="0 -14 300 192" width="278" height="214" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:214px;background:#13293D;border:1px solid #0F172A;">
+      <rect x="-20" y="-30" width="340" height="230" fill="#13293D"/>
       <!-- Subtle dark-navy graticule -->
       <g stroke="#23415C" stroke-width="0.7">
-        <line x1="0" y1="41" x2="300" y2="41"/>
-        <line x1="0" y1="82" x2="300" y2="82" stroke-dasharray="3 2"/>
-        <line x1="0" y1="123" x2="300" y2="123"/>
-        <line x1="75" y1="-6" x2="75" y2="170"/>
-        <line x1="150" y1="-6" x2="150" y2="170"/>
-        <line x1="225" y1="-6" x2="225" y2="170"/>
+        <line x1="-20" y1="41" x2="320" y2="41"/>
+        <line x1="-20" y1="82" x2="320" y2="82" stroke-dasharray="3 2"/>
+        <line x1="-20" y1="123" x2="320" y2="123"/>
+        <line x1="75" y1="-30" x2="75" y2="200"/>
+        <line x1="150" y1="-30" x2="150" y2="200"/>
+        <line x1="225" y1="-30" x2="225" y2="200"/>
       </g>
-      <!-- High-contrast warm cream-sand continents -->
+      <!-- High-contrast warm cream-sand continents strictly inside x:12..290, y:8..156 -->
       <g fill="#E6D8B8" stroke="#8C7A5B" stroke-width="0.8" stroke-linejoin="round">
-        <path d="M12,26 L36,18 L72,20 L89,30 L82,44 L73,56 L66,68 L58,78 L50,75 L44,64 L32,54 L24,42 Z"/>
-        <path d="M98,9 L124,9 L130,24 L112,30 L100,22 Z"/>
-        <path d="M72,82 L92,85 L112,102 L106,124 L92,150 L82,154 L76,128 L69,102 Z"/>
-        <path d="M132,35 L138,33 L139,42 L133,43 Z"/>
-        <path d="M140,23 L162,16 L180,22 L182,46 L166,53 L156,56 L144,53 L136,45 Z"/>
-        <path d="M134,62 L166,61 L181,78 L180,100 L169,126 L158,141 L148,122 L143,100 L122,90 L122,73 Z"/>
-        <path d="M182,118 L187,120 L185,131 L180,129 Z"/>
-        <path d="M180,22 L242,20 L270,34 L258,60 L242,76 L226,88 L215,92 L207,89 L198,74 L186,78 L175,65 L176,50 Z"/>
-        <path d="M250,49 L257,52 L253,63 L247,60 Z"/>
-        <path d="M214,98 L236,103 L248,108 L234,113 L213,107 Z"/>
-        <path d="M228,119 L260,117 L268,135 L256,148 L230,142 Z"/>
-        <path d="M276,144 L283,147 L279,157 L273,154 Z"/>
+        <!-- North America -->
+        <path d="M16,24 L42,16 L78,18 L95,28 L88,44 L76,56 L66,68 L56,76 L46,72 L38,60 L26,52 L18,38 Z"/>
+        <!-- Greenland -->
+        <path d="M96,8 L122,8 L126,22 L110,28 L98,20 Z"/>
+        <!-- South America -->
+        <path d="M68,80 L88,83 L104,100 L100,122 L88,148 L78,152 L72,126 L64,100 Z"/>
+        <!-- UK / Ireland -->
+        <path d="M130,33 L136,31 L137,40 L131,41 Z"/>
+        <!-- Continental Europe -->
+        <path d="M138,22 L158,15 L176,21 L176,45 L164,51 L154,54 L142,51 L134,44 Z"/>
+        <!-- Africa -->
+        <path d="M132,60 L162,59 L174,76 L173,98 L164,124 L154,138 L144,120 L140,98 L124,88 L124,71 Z"/>
+        <!-- Madagascar -->
+        <path d="M176,115 L181,117 L179,128 L174,126 Z"/>
+        <!-- Asia -->
+        <path d="M175,21 L238,19 L264,33 L254,58 L240,74 L224,86 L213,90 L205,87 L196,72 L184,76 L173,63 L174,48 Z"/>
+        <!-- Japan -->
+        <path d="M256,46 L263,49 L259,60 L253,57 Z"/>
+        <!-- SE Asia / Indonesia -->
+        <path d="M214,96 L236,101 L248,106 L234,111 L213,105 Z"/>
+        <!-- Australia -->
+        <path d="M230,117 L262,115 L274,133 L260,146 L232,140 Z"/>
+        <!-- New Zealand -->
+        <path d="M280,141 L287,144 L283,155 L278,152 Z"/>
       </g>
       ${pins}
     </svg>`;
@@ -641,9 +724,9 @@ function buildHtml() {
   .micro-rail {
     display: flex;
     justify-content: space-between;
-    font-size: 8.2px;
+    font-size: 8.5px;
     font-weight: 800;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: #475569;
     margin-bottom: 1px;
@@ -786,15 +869,15 @@ function buildHtml() {
   }
   .lead-hl {
     font-family: Georgia, Cambria, serif;
-    font-size: 16.4px;
+    font-size: 17.6px;
     font-weight: 700;
-    line-height: 1.09;
+    line-height: 1.07;
     color: #0F172A;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
   }
   .lead-sum {
-    font-size: 9.0px;
-    line-height: 1.18;
+    font-size: 9.9px;
+    line-height: 1.2;
     color: #1E293B;
   }
 
@@ -826,14 +909,14 @@ function buildHtml() {
   }
   .sec-hl {
     font-family: Georgia, Cambria, serif;
-    font-size: 13.1px;
+    font-size: 13.6px;
     font-weight: 700;
     line-height: 1.08;
     color: #0F172A;
     letter-spacing: -0.015em;
   }
   .sec-sum {
-    font-size: 9.5px;
+    font-size: 9.6px;
     line-height: 1.15;
     letter-spacing: -0.012em;
     color: #1E293B;
@@ -917,16 +1000,16 @@ function buildHtml() {
     display: flex;
     align-items: baseline;
     gap: 4px;
-    font-size: 9.2px;
-    line-height: 1.15;
-    letter-spacing: -0.018em;
+    font-size: 9.6px;
+    line-height: 1.18;
+    letter-spacing: -0.02em;
     color: #1E293B;
     padding: 0.5px 0;
     white-space: nowrap;
   }
   .b-num {
     flex: 0 0 13px;
-    font-size: 9.1px;
+    font-size: 9.4px;
     font-weight: 900;
     font-variant-numeric: tabular-nums;
     text-align: right;
@@ -944,8 +1027,8 @@ function buildHtml() {
     background: #FEF2F2;
     border: 2px solid #B91C1C;
     padding: 3.5px 7px;
-    font-size: 8.1px;
-    line-height: 1.24;
+    font-size: 8.95px;
+    line-height: 1.26;
     color: #450A0A;
   }
   .date-check strong:first-child {
@@ -955,8 +1038,9 @@ function buildHtml() {
   .foot-rail {
     display: flex;
     justify-content: space-between;
-    font-size: 7.4px;
+    font-size: 7.8px;
     font-weight: 600;
+    letter-spacing: 0.015em;
     color: #334155;
     padding: 0 1px;
   }
@@ -967,7 +1051,7 @@ function buildHtml() {
     <header class="masthead">
       <div class="micro-rail">
         <span>THE WORLD IN ONE DAY</span>
-        <span>${TOTAL_STORIES} STORIES · 7 REGIONS · CONTEST EDITION FOR FRIDAY 20 NOVEMBER 2026</span>
+        <span>${TOTAL_STORIES} STORIES · 7 REGIONS · EVERY ONE DATED FRIDAY 20 NOVEMBER 2026</span>
       </div>
       <h1>Friday 20 November 2026</h1>
       <div class="deck">
@@ -993,11 +1077,11 @@ function buildHtml() {
         <div class="map-main">
           <div class="panel-hdr">
             <h3>Where It Happened</h3>
-            <span>1–3 Leads · 4–13 Features</span>
+            <span>Stories mapped by number</span>
           </div>
           ${renderWorldMapSvg()}
         </div>
-        <div class="map-cap">Each number matches the story on this page (1–3 Leads · 4–13 Features).</div>
+        <div class="map-cap">Each number is the story with that number on this page.</div>
       </div>
 
       <div class="briefs-panel">
@@ -1014,11 +1098,11 @@ function buildHtml() {
 
     <footer class="footer-wrap">
       <div class="date-check">
-        <strong>DATE CHECK —</strong> This edition sums up Friday 20 November 2026 alone (the 20 Nov contest day; the 13 Nov house reference images show an earlier week's news). <strong>Left out as Thursday 19 November's news:</strong> the World Court's ruling on Myanmar, the three-leader Trump–Xi–Putin declaration in Shenzhen, Anthropic's Nasdaq IPO debut, and the migrant boat lost off Senegal. <strong>Not yet happened on Friday 20 Nov, so not shown:</strong> BepiColombo's Saturday 21 Nov entry into orbit round Mercury and any final COP31 text.
+        <strong>DATE CHECK</strong> Left out as Thursday 19 November's news: the World Court's ruling on Myanmar, the three-leader declaration in Shenzhen, Anthropic's Nasdaq debut and the migrant boat lost off Senegal. Not yet happened, so not shown: BepiColombo's entry into orbit round Mercury and any final COP31 text.
       </div>
       <div class="foot-rail">
         <span>Every story here happened, or was first reported, on Friday 20 November 2026. Officials' counts are attributed.</span>
-        <span>Sources: Reuters, AP, AFP, Guardian, Al Jazeera, IMD, ANSA, UN News, ICC, ESPN · 100% original vector art</span>
+        <span>Sources named beside each story · original drawings</span>
       </div>
     </footer>
   </main>
