@@ -233,24 +233,24 @@ const SECONDARY_STORIES = [
       <svg viewBox="0 0 188 70" width="100%" height="70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="188" height="70" fill="#EAF2FA"/>
         <!-- EU circle (right) -->
-        <circle cx="150" cy="36" r="18" fill="#1E3A8A" stroke="#1E40AF" stroke-width="1"/>
-        <circle cx="150" cy="23.5" r="1.5" fill="#FACC15"/><circle cx="159" cy="27" r="1.5" fill="#FACC15"/>
-        <circle cx="162.5" cy="36" r="1.5" fill="#FACC15"/><circle cx="159" cy="45" r="1.5" fill="#FACC15"/>
-        <circle cx="150" cy="48.5" r="1.5" fill="#FACC15"/><circle cx="141" cy="45" r="1.5" fill="#FACC15"/>
-        <circle cx="137.5" cy="36" r="1.5" fill="#FACC15"/><circle cx="141" cy="27" r="1.5" fill="#FACC15"/>
+        <circle cx="154" cy="36" r="17.5" fill="#1E3A8A" stroke="#1E40AF" stroke-width="1"/>
+        <circle cx="154" cy="24" r="1.45" fill="#FACC15"/><circle cx="162.5" cy="27.5" r="1.45" fill="#FACC15"/>
+        <circle cx="166" cy="36" r="1.45" fill="#FACC15"/><circle cx="162.5" cy="44.5" r="1.45" fill="#FACC15"/>
+        <circle cx="154" cy="48" r="1.45" fill="#FACC15"/><circle cx="145.5" cy="44.5" r="1.45" fill="#FACC15"/>
+        <circle cx="142" cy="36" r="1.45" fill="#FACC15"/><circle cx="145.5" cy="27.5" r="1.45" fill="#FACC15"/>
         <!-- UK flag (left) -->
-        <rect x="12" y="25" width="42" height="26" rx="1.5" fill="#1E3A8A" stroke="#0F172A" stroke-width="0.9"/>
-        <line x1="12" y1="25" x2="54" y2="51" stroke="#FFFFFF" stroke-width="3.6"/>
-        <line x1="54" y1="25" x2="12" y2="51" stroke="#FFFFFF" stroke-width="3.6"/>
-        <line x1="33" y1="25" x2="33" y2="51" stroke="#FFFFFF" stroke-width="5.8"/>
-        <line x1="12" y1="38" x2="54" y2="38" stroke="#FFFFFF" stroke-width="5.8"/>
-        <line x1="33" y1="25" x2="33" y2="51" stroke="#DC2626" stroke-width="3.1"/>
-        <line x1="12" y1="38" x2="54" y2="38" stroke="#DC2626" stroke-width="3.1"/>
+        <rect x="10" y="25" width="40" height="26" rx="1.5" fill="#1E3A8A" stroke="#0F172A" stroke-width="0.9"/>
+        <line x1="10" y1="25" x2="50" y2="51" stroke="#FFFFFF" stroke-width="3.5"/>
+        <line x1="50" y1="25" x2="10" y2="51" stroke="#FFFFFF" stroke-width="3.5"/>
+        <line x1="30" y1="25" x2="30" y2="51" stroke="#FFFFFF" stroke-width="5.6"/>
+        <line x1="10" y1="38" x2="50" y2="38" stroke="#FFFFFF" stroke-width="5.6"/>
+        <line x1="30" y1="25" x2="30" y2="51" stroke="#DC2626" stroke-width="3.0"/>
+        <line x1="10" y1="38" x2="50" y2="38" stroke="#DC2626" stroke-width="3.0"/>
         <!-- Golden bridge arch + SPS · ETS · 100K tag -->
-        <path d="M58,36 Q93,17 128,36" fill="none" stroke="#D97706" stroke-width="2.8" stroke-linecap="round"/>
+        <path d="M55,36 Q93,17 131,36" fill="none" stroke="#D97706" stroke-width="2.8" stroke-linecap="round"/>
         <circle cx="93" cy="26.5" r="4.2" fill="#047857" stroke="#FFFFFF" stroke-width="1"/>
-        <rect x="61" y="39" width="64" height="13" rx="2" fill="#FFFFFF" stroke="#1E3A8A" stroke-width="0.9"/>
-        <text x="93" y="48.2" text-anchor="middle" font-size="7.3" font-weight="900" fill="#0F172A" font-family="Segoe UI,sans-serif">SPS · ETS · 100K</text>
+        <rect x="63" y="39" width="60" height="13" rx="2" fill="#FFFFFF" stroke="#1E3A8A" stroke-width="0.9"/>
+        <text x="93" y="48.1" text-anchor="middle" font-size="6.9" font-weight="900" fill="#0F172A" font-family="Segoe UI,sans-serif">SPS · ETS · 100K</text>
         ${stampBanner('UK–EU RESET', '#1D4ED8', '#FFFFFF', 6, 4, 110, 17, 9.3)}
         ${sourcePill('Agreed · Reuters', 86, 70)}
       </svg>`,
@@ -324,11 +324,11 @@ const SECONDARY_STORIES = [
         <path d="M0,47 Q54,37 104,48 T188,41 L188,70 L0,70 Z" fill="#93C5FD"/>
         <path d="M4,54 Q54,44 104,54 T184,48" fill="none" stroke="#1D4ED8" stroke-width="1.3" opacity="0.75"/>
         <!-- Checkpoint gate -->
-        <rect x="26" y="34" width="64" height="5" rx="1" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.9"/>
-        <rect x="33" y="34" width="9" height="5" fill="#DC2626"/>
-        <rect x="52" y="34" width="9" height="5" fill="#DC2626"/>
-        <rect x="71" y="34" width="9" height="5" fill="#DC2626"/>
-        <path d="M19,27 L27,30 L26,39 L19,44 L12,39 L11,30 Z" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
+        <rect x="26" y="31" width="64" height="5" rx="1" fill="#FFFFFF" stroke="#0F172A" stroke-width="0.9"/>
+        <rect x="33" y="31" width="9" height="5" fill="#DC2626"/>
+        <rect x="52" y="31" width="9" height="5" fill="#DC2626"/>
+        <rect x="71" y="31" width="9" height="5" fill="#DC2626"/>
+        <path d="M19,24 L27,27 L26,36 L19,41 L12,36 L11,27 Z" fill="#0F172A" stroke="#F59E0B" stroke-width="1"/>
         <!-- Joint HQ + Iraqi flag -->
         <rect x="128" y="21" width="38" height="22" fill="#B45309" stroke="#0F172A" stroke-width="0.9"/>
         <line x1="147" y1="6" x2="147" y2="23" stroke="#0F172A" stroke-width="1.5"/>
@@ -546,13 +546,13 @@ const MAP_PINS = [
   { num: 2, px: 207, py: 80, reg: 'ASIA' },                        // Gopalpur, India
   { num: 3, px: 252, py: 82, tx: 240, ty: 71, reg: 'ASIA' },     // Taipei / Tokyo Markets
   { num: 4, px: 120, py: 27, tx: 143, ty: 41, reg: 'EUROPE' },   // Brussels / UK-EU
-  { num: 5, px: 164, py: 69, tx: 166, ty: 55, reg: 'M. EAST' },  // Antalya COP31
+  { num: 5, px: 163, py: 74, tx: 166, ty: 55, reg: 'M. EAST' },  // Antalya COP31
   { num: 6, px: 155, py: 18, tx: 161, ty: 39, reg: 'EUROPE' },   // SE Poland
-  { num: 7, px: 193, py: 66, tx: 179, ty: 61, reg: 'M. EAST' },  // Babil, Iraq
+  { num: 7, px: 188, py: 75, tx: 179, ty: 61, reg: 'M. EAST' },  // Babil, Iraq
   { num: 8, px: 273, py: 52, tx: 254, ty: 56, reg: 'ASIA' },     // Tokyo, Japan
   { num: 9, px: 174, py: 100, reg: 'AFRICA' },                     // Turkana, Kenya
-  { num: 10, px: 146, py: 66, tx: 153, ty: 52, reg: 'EUROPE' },  // Rome, Italy
-  { num: 11, px: 121, py: 58, tx: 141, ty: 52, reg: 'GLOBAL' },  // Barcelona (ENA Trial)
+  { num: 10, px: 147, py: 67, tx: 153, ty: 52, reg: 'EUROPE' },  // Rome, Italy
+  { num: 11, px: 116, py: 61, tx: 141, ty: 52, reg: 'GLOBAL' },  // Barcelona (ENA Trial)
   { num: 12, px: 70, py: 54, reg: 'AMERICAS' },                    // Washington, DC
   { num: 13, px: 279, py: 151, reg: 'OCEANIA' },                   // Wellington, NZ
 ];
@@ -1088,7 +1088,7 @@ function buildHtml() {
           </div>
           ${renderWorldMapSvg()}
         </div>
-        <div class="map-cap">Numbers 1–13 match Lead &amp; Feature stories; colored dots map regional briefs 14–33.</div>
+        <div class="map-cap">Numbers 1–13 match Lead &amp; Feature stories; colored dots map regional briefs 14–35.</div>
       </div>
 
       <div class="briefs-panel">
@@ -1106,7 +1106,7 @@ function buildHtml() {
     <footer class="footer-wrap">
       <div class="date-check">
         <span class="dc-badge">Date Check - Excluded</span>
-        <strong>19 Nov:</strong> Trump–Xi–Putin APEC Shenzhen declaration, ICJ Myanmar verdict, Anthropic $81.3B Nasdaq IPO, Berlin Ukraine summit, Bukele 3rd-term filing, Indonesia asset law, Colombia strike start.
+        <strong>19 Nov:</strong> Trump–Xi–Putin APEC Shenzhen declaration, Thu Wall St drop, ICJ Myanmar verdict, Anthropic $81.3B Nasdaq IPO, Berlin Ukraine summit, Bukele filing, Indonesia asset law, Colombia strike.
         <strong>14–18 Nov:</strong> Voyager 1 &amp; Van Gogh $190.4M (18 Nov), Senegal Yenne boat (17–18 Nov), Kerch Bridge (17 Nov), Italy €805M Meta fine (14 Nov).
         <strong>&gt;20 Nov (not yet):</strong> BepiColombo orbit insertion (21 Nov), final COP31 text, F1 Vegas race.
       </div>
